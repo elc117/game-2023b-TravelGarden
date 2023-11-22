@@ -1,1 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/TUsa8_pI)
+Projeto final da disciplina de Paradigmas de Programação feito em Java. Para a realização do jogo, nos baseamos nos livros "Três irmãos e um felino" e "Três irmãos e um felino II: O diálogo com a borboleta" da autora Priscila Lanes. Todas as ilustrações dos livros e respectivamente, do jogo, foram realizadas pela editora Albatroz.
+
+## Referências:
+https://www.youtube.com/@TerminalRootTV 
