@@ -2,3 +2,4 @@ Projeto final da disciplina de Paradigmas de Programação feito em Java. Para a
 
 ## Referências:
 https://www.youtube.com/@TerminalRootTV 
+https://pt.stackoverflow.com/
