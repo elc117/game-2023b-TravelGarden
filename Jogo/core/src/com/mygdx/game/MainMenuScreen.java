@@ -32,7 +32,7 @@ public class MainMenuScreen implements Screen {
 
         stage = new Stage();
         buttonTexture = new Texture(Gdx.files.internal("botao.png"));
-        backgroundTexture = new Texture(Gdx.files.internal("travelgarden.jpeg")); // Carregue a textura do fundo
+        backgroundTexture = new Texture(Gdx.files.internal("background.png")); // Carrega a textura do fundo
 
 
         ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
@@ -50,10 +50,10 @@ public class MainMenuScreen implements Screen {
             }
         });
 
-        // Adicione o botão ao palco
+        // Adiciona o botão ao palco
         stage.addActor(startButton);
 
-        // Adicione o palco como processador de entrada
+        // Adiciona o palco como processador de entrada
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -81,33 +81,28 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        // TODO Auto-generated method stub
     }
 
     @Override
     public void show() {
-        // TODO Auto-generated method stub
     }
 
     @Override
     public void hide() {
-        // TODO Auto-generated method stub
-    }
+        }
 
     @Override
     public void resume() {
-        // TODO Auto-generated method stub
     }
 
     @Override
     public void dispose() {
         stage.dispose();
-        buttonTexture.dispose(); backgroundTexture.dispose(); // Libere os recursos da textura do fundo
+        buttonTexture.dispose(); backgroundTexture.dispose(); // Libera os recursos da textura do fundo
     
     }
 
     @Override
     public void pause() {
-        // TODO Auto-generated method stub
     }
 }
