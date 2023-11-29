@@ -19,13 +19,20 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.Color;
 
 
-public class MyGdxGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	BitmapFont font; 
-	String[] options; 
-	String question; 
-	int correctOption;
+public class MyGdxGame extends ApplicationAdapter implements Screen {
+  final Drop game;
+  SpriteBatch batch;
+  Texture img, tCat, tBall, tEnemy;
+  private Sprite cat, ball;
+  private float posX, posY, velocity, xBall, yBall;
+  private boolean attack, gameover;
+  private Array<Rectangle> enemies;
+  private long lastEnemyTime;
+  private int score, power, numEnemies;
+
+  private FreeTypeFontGenerator generator;
+  private FreeTypeFontGenerator.FreeTypeFontParameter parameter;
+  private BitmapFont bitmap;
 	
 	@Override
 	public void create () {
