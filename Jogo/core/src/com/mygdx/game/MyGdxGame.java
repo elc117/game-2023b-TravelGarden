@@ -70,44 +70,57 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
     gameover = false;
   }
 
-	@Override
-	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(img, 0, 0);
+  @Override
+  public void render (float delta) {
 
-		/////////////////////////
+    this.moveNave();
+    this.moveMissile();
+    this.moveEnemies();
 
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-                Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    ScreenUtils.clear(1, 0, 0, 1);
+    batch.begin();
+    batch.draw(img, 0, 0);
 
-   	      ScreenUtils.clear(1, 0, 0, 1);
+    if(!gameover){
+      if(attack){
+      
+        batch.draw(ball, xBall, yBall);
+      }
+      batch.draw(cat, posX, posY);
 
+      for(Rectangle enemy : enemies ){
+        batch.draw(tEnemy, enemy.x, enemy.y);
+      }
+      bitmap.draw(batch, "Score: " + score, 20, Gdx.graphics.getHeight() - 20);
+      bitmap.draw(
+          batch, "Power: " + power, 
+          Gdx.graphics.getWidth() - 150, 
+          Gdx.graphics.getHeight() - 20
+          );
+    }else{
+      bitmap.draw(batch, "Score: " + score, 20, Gdx.graphics.getHeight() - 20);
+      bitmap.draw(
+          batch, "GAME OVER", 
+          Gdx.graphics.getWidth() - 150, 
+          Gdx.graphics.getHeight() - 20
+          );
 
-		
-		batch.end();
-		
-		 // Lógica para verificar a resposta ao tocar na tela
-		 if (Gdx.input.isTouched()) {
-        	float touchX = Gdx.input.getX();
-        	float touchY = Gdx.input.getY();
+      if( Gdx.input.isKeyPressed(Input.Keys.ENTER) ){
+        score = 0;
+        power = 3;
+        posX = 0;
+        posY = 0;
+        gameover = false;
+      }
+    }
 
-        	// Verifique se o toque está dentro da área da opção correta
-        	if (touchX > 100 && touchX < 500 && touchY > 200 && touchY < 250) {
-            	// Implemente o que acontece quando a resposta está correta
-            	Gdx.app.log("QuizGame", "Resposta correta!");
-        	} else {
-            	// Implemente o que acontece quando a resposta está incorreta
-            	Gdx.app.log("QuizGame", "Resposta incorreta!");
-        	}
+    batch.end();
+  }
 
-		 }
-	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
-	}
-}
+  @Override
+  public void dispose () {
+    batch.dispose();
+    img.dispose();
+    tCat.dispose();
+  }
 
