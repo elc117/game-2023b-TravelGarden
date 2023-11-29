@@ -34,16 +34,41 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
   private FreeTypeFontGenerator.FreeTypeFontParameter parameter;
   private BitmapFont bitmap;
 	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("menina.jpg");
-		font = new BitmapFont();
+  public MyGdxGame (final Drop passed_game) {
+    game = passed_game; 
+    batch = new SpriteBatch();
+    img = new Texture("jardim.jpg");
+    tCat = new Texture("gatinho.png");
+    cat = new Sprite(tCat);
+    posX = 0;
+    posY = 0;
+    velocity = 10;
 
-		question = "Qual é o bioma na cidade de Santa Maria?";
-		options = new String[]{"Floresta Atlantica","Pampas", "Cerrado","Mediterraneo"};
-		correctOption = 1; 
-	}
+    tBall = new Texture("boladegato.png");
+    ball  = new Sprite(tBall);
+    xBall = posX;
+    yBall = posY;
+    attack = false;
+
+    tEnemy = new Texture("inimigo.png");
+    enemies = new Array<Rectangle>();
+    lastEnemyTime = 0;
+
+    score = 0;
+    power = 3;
+    numEnemies = 799999999;
+
+    generator = new FreeTypeFontGenerator(Gdx.files.internal("font.ttf"));
+    parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+    parameter.size = 30;
+    parameter.borderWidth = 1;
+    parameter.borderColor = Color.BLACK;
+    parameter.color = Color.WHITE;
+    bitmap = generator.generateFont(parameter);
+
+    gameover = false;
+  }
 
 	@Override
 	public void render () {
