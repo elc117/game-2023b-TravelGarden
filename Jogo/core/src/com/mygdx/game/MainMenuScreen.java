@@ -31,15 +31,15 @@ public class MainMenuScreen implements Screen {
         camera.setToOrtho(false, WIDTH, HEIGHT);
 
         stage = new Stage();
-        buttonTexture = new Texture(Gdx.files.internal("botao.png"));
-        backgroundTexture = new Texture(Gdx.files.internal("background.png")); // Carrega a textura do fundo
+        buttonTexture = new Texture(Gdx.files.internal("Button1.png"));
+        backgroundTexture = new Texture(Gdx.files.internal("travelgarden.jpeg"));
 
 
         ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
         style.imageUp = new TextureRegionDrawable(new TextureRegion(buttonTexture));
         ImageButton startButton = new ImageButton(style);
         
-        startButton.setPosition(WIDTH / 2 - startButton.getWidth() / 2, HEIGHT / 2 - startButton.getHeight() / 2);
+        startButton.setPosition(WIDTH / 2 + WIDTH/2 - startButton.getWidth() / 2, HEIGHT *2 - startButton.getHeight() / 2);
 
         // Adicione um ouvinte de clique ao botão
         startButton.addListener(new ClickListener() {
