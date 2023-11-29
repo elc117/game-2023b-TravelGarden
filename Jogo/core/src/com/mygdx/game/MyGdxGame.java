@@ -124,3 +124,138 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
     tCat.dispose();
   }
 
+
+  private void moveCat(){
+
+    if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+      if( posX < Gdx.graphics.getWidth() - cat.getWidth() ){
+        posX += velocity;
+      }
+    }
+    if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+      if( posX > 0 ){
+        posX -= velocity;
+      }
+    }
+    if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+      if( posY < Gdx.graphics.getHeight() - nave.getHeight() ){
+        posY += velocity;
+      }
+    }
+    if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+      if( posY > 0 ){
+        posY -= velocity;
+      }
+    }
+  }
+
+  private void moveBall(){
+    if( Gdx.input.isKeyPressed(Input.Keys.SPACE) && !attack ){
+      attack = true;
+      
+      yBall = posY  + cat.getHeight() / 2 - 12;
+    }
+
+    if(attack){
+      if( xBall < Gdx.graphics.getWidth() ){
+        xBall += 40;
+      }else{
+        
+        xBall = posX + cat.getWidth() / 2;
+        attack = false;
+      }
+    }else{
+     
+      xBall = posX + nave.getWidth() / 2;
+      yBall = posY  + nave.getHeight() / 2 - 12;
+    }
+  }
+
+  private void spawnEnemies(){
+    Rectangle enemy = new Rectangle( Gdx.graphics.getWidth(), MathUtils.random(0, Gdx.graphics.getHeight() - tEnemy.getHeight()), tEnemy.getWidth(), tEnemy.getHeight());
+    enemies.add(enemy);
+    lastEnemyTime = TimeUtils.nanoTime();
+  }
+
+  private void moveEnemies(){
+
+    if( TimeUtils.nanoTime() - lastEnemyTime > numEnemies ){
+      this.spawnEnemies();
+    }
+
+
+    for( Iterator<Rectangle> iter = enemies.iterator(); iter.hasNext(); ){
+      Rectangle enemy = iter.next();
+      enemy.x -= 400 * Gdx.graphics.getDeltaTime();
+
+      
+      if( collide(enemy.x, enemy.y, enemy.width, enemy.height, xBall, yMBall, ball.getWidth(), ball.getHeight()) && attack ){
+        ++score;
+        if( score % 10 == 0 ){
+          numEnemies -= 100;
+        }
+        
+        attack = false;
+        iter.remove();
+      
+      }else if( collide(enemy.x, enemy.y, enemy.width, enemy.height, posX, posY, cat.getWidth(), cat.getHeight()) && !gameover ){
+        --power;
+        if( power <= 0 ){
+          gameover = true;
+        }
+        iter.remove();
+      }
+
+      if(enemy.x + tEnemy.getWidth() < 0){
+        iter.remove();
+      }
+    }
+
+
+  }
+
+  private boolean collide(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2){
+    if( x1 + w1 > x2 && x1 < x2 + w2 && y1 + h1 > y2 && y1 < y2 + h2 ){
+      return true;
+    }
+    return false;
+  }
+
+
+
+
+
+
+  @Override
+  public void resize(int width, int height) {
+
+
+  }
+
+  @Override
+  public void show() {
+
+  }
+
+
+
+  @Override
+  public void hide() {
+
+
+  }
+
+  @Override
+  public void pause() {
+
+
+  }
+
+  @Override
+  public void resume() {
+
+
+  }
+
+}
+
