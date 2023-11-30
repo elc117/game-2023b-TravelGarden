@@ -35,9 +35,9 @@ public class Quiz extends ApplicationAdapter implements Screen{
         font = new BitmapFont();
         img = new Texture("jardim.jpg");
 
-        question = "Qual é a capital do Brasil?";
-        options = new String[]{"Brasília", "Rio de Janeiro", "São Paulo", "Belo Horizonte"};
-        correctOption = 0;  
+        question = "Qual ano foi fundado o Centro de Ciências Naturais\n e Exatas (CCNE)?";
+        options = new String[]{"1970", "1980", "1960", "1500"};
+        correctOption = 0; 
 
         stage = new Stage();
 
@@ -51,7 +51,7 @@ public class Quiz extends ApplicationAdapter implements Screen{
             @Override
             public void clicked(InputEvent event, float x, float y) {
               
-                Gdx.app.log("QuizGame", "Avançando para a próxima tela...");
+               
                 game.setScreen(new MyGdxGame(game));
                
                 dispose();
