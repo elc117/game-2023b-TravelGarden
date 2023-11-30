@@ -73,7 +73,7 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
   @Override
   public void render (float delta) {
 
-    this.moveNave();
+    this.moveCat();
     this.moveMissile();
     this.moveEnemies();
 
@@ -138,7 +138,7 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
       }
     }
     if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-      if( posY < Gdx.graphics.getHeight() - nave.getHeight() ){
+      if( posY < Gdx.graphics.getHeight() - cat.getHeight() ){
         posY += velocity;
       }
     }
@@ -166,8 +166,8 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
       }
     }else{
      
-      xBall = posX + nave.getWidth() / 2;
-      yBall = posY  + nave.getHeight() / 2 - 12;
+      xBall = posX + cat.getWidth() / 2;
+      yBall = posY  + cat.getHeight() / 2 - 12;
     }
   }
 
@@ -198,7 +198,7 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
         attack = false;
         iter.remove();
       
-      }else if( collide(enemy.x, enemy.y, enemy.width, enemy.height, posX, posY, cat.getWidth(), cat.getHeight()) && !gameover ){
+      } else if( collide(enemy.x, enemy.y, enemy.width, enemy.height, posX, posY, cat.getWidth(), cat.getHeight()) && !gameover ){
         --power;
         if( power <= 0 ){
           gameover = true;
@@ -220,10 +220,6 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
     }
     return false;
   }
-
-
-
-
 
 
   @Override
