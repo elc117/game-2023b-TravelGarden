@@ -41,19 +41,19 @@ public class MainMenuScreen implements Screen {
         
         startButton.setPosition(WIDTH / 2 + WIDTH/2 - startButton.getWidth() / 2, HEIGHT *2 - startButton.getHeight() / 2);
 
-        // Adicione um ouvinte de clique ao botão
+        
         startButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new Quiz(game));
+                game.setScreen(new Historinha(game));
                 dispose();
             }
         });
 
-        // Adiciona o botão ao palco
+        
         stage.addActor(startButton);
 
-        // Adiciona o palco como processador de entrada
+        
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -98,8 +98,7 @@ public class MainMenuScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-        buttonTexture.dispose(); backgroundTexture.dispose(); // Libera os recursos da textura do fundo
-    
+        buttonTexture.dispose(); backgroundTexture.dispose(); 
     }
 
     @Override
