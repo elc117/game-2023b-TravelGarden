@@ -113,6 +113,9 @@ public class MyGdxGame extends ApplicationAdapter implements Screen {
         gameover = false;
       }
     }
+	  if (score >= 10) {  
+      game.setScreen(new Historinha3(game));
+		    }
 
     batch.end();
   }
