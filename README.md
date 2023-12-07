@@ -11,7 +11,7 @@ A ideia do jogo é que uma família composta por um gato e três crianças iriam
 No que nos baseamos para a criação do código?
 ------------------------------------------------
 
-A priori, os cursos disponibilizados pelos canais do youtube "TerminalRoot" e "HollowBit" foram essenciais para o entendimento das funções e preparação de ambinte na biblioteca LibGDX.  Ademais, foi utilizado como referências fóruns online para sanar dúvidas e apostilas sobre Java e Orientação a Objetos.
+A priori, os cursos disponibilizados pelos canais do youtube "TerminalRoot" e "HollowBit" foram essenciais para o entendimento das funções e preparação de ambinte na biblioteca LibGDX.  Ademais, foram utilizados materiais como referências fóruns online para sanar dúvidas e apostilas sobre Java e Orientação a Objetos.
 
 
 ## Referências:
